@@ -17,7 +17,7 @@ hosts_path = ""
 hostname_path = ""
 domain_name = ""
 log_path = ""
-config_ini = os.path.join(os.path.dirname(__file__), 'config.ini')
+config_ini = "/etc/gns3_hostname_grabber.ini"
 
 
 def get_config(conf_file):
