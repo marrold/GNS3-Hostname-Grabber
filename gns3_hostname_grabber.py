@@ -7,6 +7,7 @@ import sys
 from socket import gethostname
 import ConfigParser
 import io
+import os
 
 api_address = ""
 api_port = ""
@@ -14,10 +15,11 @@ hosts_path = ""
 hostname_path = ""
 domain_name = ""
 log_path = ""
+config_ini = os.path.join(os.path.dirname(__file__), 'config.ini')
 
 
-def get_config():
-    with open("config.ini") as f:
+def get_config(conf_file):
+    with open(conf_file) as f:
         config_file = f.read()
     config = ConfigParser.RawConfigParser(allow_no_value=True)
     config.readfp(io.BytesIO(config_file))
@@ -195,7 +197,7 @@ def init_logging():
 
 def main():
 
-    get_config()
+    get_config(config_ini)
     init_logging()
 
     logger.info('GNS3-Hostname-Grabber is running')
